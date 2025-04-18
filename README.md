@@ -1,0 +1,2 @@
+# applicationLogger
+Job Application Gamified
