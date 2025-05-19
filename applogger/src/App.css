@@ -1,0 +1,410 @@
+/* src/App.css - Additions and Modifications */
+
+/* --- General & Layout --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  background-color: #f0f2f5; /* Lighter background */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 900px; /* Wider container */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  /* Removed fixed background/shadow - elements handle own styling */
+}
+
+h1, h2, h3 {
+  color: #1a2c47; /* Darker blue */
+  margin-top: 0; /* Reset top margin */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+h2 {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+h3 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500; /* Slightly bolder labels */
+  font-size: 0.9rem;
+  color: #444;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="date"],
+textarea,
+select {
+  width: 100%; /* Make inputs take full width */
+  padding: 10px 12px; /* More padding */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding/border in width */
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem; /* Add space below inputs */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resize only */
+}
+
+/* --- Card Style --- */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+
+/* --- Form Specific Styles --- */
+.job-form h3 {
+    text-align: center;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  gap: 1rem 1.5rem; /* Row gap, Column gap */
+  margin-bottom: 1.5rem;
+}
+.form-grid-span-col-2 {
+  grid-column: span 2; /* Make element span both columns */
+}
+.job-form .checkbox-group {
+  display: flex; /* Align checkbox with label nicely */
+  align-items: center;
+  margin-top: 0.5rem; /* Align with other rows better */
+}
+.job-form .checkbox-group label {
+  margin-bottom: 0; /* Remove bottom margin for checkbox label */
+  font-weight: normal;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.job-form .checkbox-group input[type="checkbox"] {
+  width: auto; /* Override default width */
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+.job-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  margin-top: 1rem; /* Add space above button */
+}
+
+/* --- Score & Action Buttons --- */
+.score-display {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #e9f7ef; /* Lighter green */
+  border: 1px solid #c8e6d8;
+  border-radius: 6px;
+}
+.score-display h2 {
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+}
+.score-value {
+  font-size: 2rem; /* Larger score */
+  font-weight: 600;
+  color: #27ae60;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+/* --- Buttons --- */
+button {
+  padding: 10px 18px; /* Consistent padding */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+}
+button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+button:active:not(:disabled) {
+    transform: translateY(0px); /* Press down on click */
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.button-primary {
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+}
+.button-secondary {
+  background-color: #6c757d; /* Bootstrap secondary grey */
+  color: white;
+}
+.button-danger {
+  background-color: #dc3545; /* Bootstrap danger red */
+  color: white;
+}
+button.small { /* For buttons inside items */
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+
+/* --- Application List Items --- */
+.app-list-container h2 {
+    text-align: center;
+}
+.app-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Styling for individual app item in list */
+.app-item {
+    /* Inherits .card style */
+}
+
+.app-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+}
+.app-item-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 15px; /* Pill shape */
+  color: white;
+  background-color: #6c757d; /* Default grey */
+  text-transform: capitalize;
+}
+/* Status specific colors (examples) */
+.status-badge.status-applied { background-color: #007bff; } /* Blue */
+.status-badge.status-screening { background-color: #17a2b8; } /* Teal */
+.status-badge.status-interviewing { background-color: #ffc107; color: #333; } /* Yellow */
+.status-badge.status-offer { background-color: #28a745; } /* Green */
+.status-badge.status-rejected { background-color: #dc3545; } /* Red */
+.status-badge.status-withdrawn { background-color: #adb5bd; color: #333; } /* Light Grey */
+
+.app-item-details p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.app-item-details p strong {
+    color: #555;
+    min-width: 100px; /* Align details */
+    display: inline-block;
+}
+.app-item-details a {
+    color: #007bff;
+    text-decoration: none;
+}
+.app-item-details a:hover {
+    text-decoration: underline;
+}
+
+.notes {
+    font-style: italic;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid #ccc;
+    white-space: pre-wrap; /* Preserve whitespace/newlines */
+}
+.notes strong { /* Override paragraph strong style */
+    min-width: 0;
+    display: inline;
+    margin-right: 5px;
+}
+
+/* Action buttons within the item */
+.app-item-actions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 0.5rem;
+}
+
+/* General Badges (Tailored/Referred) */
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 4px; /* Less rounded than status */
+  margin-left: 0.5em;
+  color: white;
+}
+.badge.tailored { background-color: #6f42c1; } /* Bootstrap purple */
+.badge.referred { background-color: #fd7e14; } /* Bootstrap orange */
+
+
+/* --- Modal Styles --- */
+.modal-backdrop {
+  position: fixed; /* Sit on top of everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+  padding: 1rem; /* Padding for small screens */
+  box-sizing: border-box;
+}
+
+.modal-content {
+  /* Inherits .card style */
+  width: 100%;
+  max-width: 700px; /* Max width for the modal */
+  max-height: 90vh; /* Prevent modal being too tall */
+  overflow-y: auto; /* Allow scrolling within modal if content overflows */
+  z-index: 1001;
+  position: relative;
+  padding: 2rem; /* More padding in modal */
+}
+.modal-content h2 {
+    text-align: center;
+    border: none; /* Remove border from h2 in modal */
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* --- Error Messages --- */
+.error-message {
+    color: #dc3545; /* Danger red */
+    background-color: #f8d7da; /* Light red */
+    border: 1px solid #f5c6cb; /* Red border */
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* src/App.css - Add these styles */
+
+/* --- Top Stats Layout --- */
+.top-stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem; /* Space below stats */
+  align-items: stretch; /* Make cards same height */
+}
+
+.score-display,
+.level-display {
+  margin: 0; /* Remove default margin */
+  /* Inherits .card styling optionally or style uniquely */
+}
+
+/* Level Display Styles */
+.level-display {
+  text-align: center;
+   padding: 1rem;
+   background-color: #f0f7ff;
+   border: 1px solid #d4eaff;
+}
+.level-display h2 {
+   font-size: 1.1rem;
+   margin-bottom: 0.5rem;
+   border: none; padding: 0;
+}
+.level-display p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+.level-display progress {
+  width: 80%;
+  height: 15px;
+  border-radius: 8px;
+  overflow: hidden; /* Ensure border-radius clips the bar */
+  border: 1px solid #ccc; /* Optional border */
+}
+/* Style the progress bar appearance */
+.level-display progress::-webkit-progress-bar {
+  background-color: #e9ecef;
+  border-radius: 8px;
+}
+.level-display progress::-webkit-progress-value {
+  background-color: #ffc107; /* Yellow */
+  border-radius: 8px 0 0 8px; /* Round left side only */
+   transition: width 0.5s ease;
+}
+.level-display progress::-moz-progress-bar { /* Firefox */
+   background-color: #ffc107;
+   border-radius: 8px;
+}
+
+/* --- Analytics Container Styles (moved to Analytics.css but good for reference) ---
+.analytics-container {
+margin-top: 2rem;
+}
+... etc ... */
+
+
+/* --- Add pointer cursor to edit/delete buttons if not present --- */
+.app-item-actions button {
+  cursor: pointer;
+}

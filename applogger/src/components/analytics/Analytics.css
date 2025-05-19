@@ -1,0 +1,38 @@
+.analytics-container {
+    /* Inherits .card style */
+    margin-top: 2rem; /* Space above analytics section */
+  }
+  
+  .analytics-container h2 {
+      text-align: center;
+      border-bottom: none; /* Remove border if added by global h2 */
+      margin-bottom: 1.5rem;
+  }
+  
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+  }
+  
+  .chart-container {
+     /* background-color: #fdfdfd; Optional background for chart area */
+     /* border: 1px solid #f0f0f0; Optional border */
+     padding: 1rem;
+     border-radius: 6px;
+  }
+  .chart-container h3 {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      color: #444;
+  }
+  
+  .analytics-container.empty {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+      font-style: italic;
+      background-color: #f8f9fa; /* Slightly different background when empty */
+  }
