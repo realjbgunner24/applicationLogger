@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# AppLogger - Job Application Gamifier ++
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+AppLogger is a tool designed to help users track their job applications while gamifying the process. It allows users to log their applications, assign points for various actions (like tailoring a CV or getting a referral), and level up based on the points accumulated. This approach aims to make the often tedious job application process more engaging and motivating.
 
-## Available Scripts
+## Features
+*   Track job applications (job title, company, date applied, status, notes, etc.)
+*   Gamified points system for actions like tailoring CVs, networking, or getting referrals.
+*   User leveling system based on points earned, providing a sense of progression.
+*   Analytics dashboard to visualize application progress, success rates, and other metrics.
+*   Full CRUD operations for managing applications (Create, Read, Update, Delete).
+*   Data persistence using CSV files for easy management and portability.
+*   Ability to download all application data as a CSV file.
 
-In the project directory, you can run:
+## Technology Stack
+*   **Frontend:** React.js
+*   **Backend:** Node.js with Express.js
+*   **Data Storage:** CSV files (`applications.csv`)
+*   **Development Environment:** `concurrently` to run frontend and backend servers simultaneously.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
+*   Node.js (which includes npm) must be installed on your system. You can download it from [nodejs.org](https://nodejs.org/).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
+1.  **Clone the repository** (or download and extract the source code):
+    ```bash
+    git clone <repository-url>
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd applogger
+    ```
+3.  **Install dependencies** for both the frontend and backend:
+    ```bash
+    npm install
+    ```
 
-### `npm test`
+### Running the Application
+1.  To start both the React development server (frontend) and the Express backend server, run the following command from the `applogger` directory:
+    ```bash
+    npm run dev
+    ```
+2.  This command uses `concurrently` to manage both processes.
+    *   The React frontend will typically be available at `http://localhost:3000`.
+    *   The Node.js/Express backend server will typically be available at `http://localhost:3001`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Endpoints (Backend: `server.js`)
 
-### `npm run build`
+The backend server provides the following API endpoints:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*   **`GET /api/applications`**
+    *   Description: Fetches all job applications and the current total score.
+    *   Response: JSON array of application objects and the total score.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*   **`POST /api/applications`**
+    *   Description: Adds a new job application.
+    *   Request Body: JSON object representing the new application.
+    *   Response: The newly added application object.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*   **`PUT /api/applications/:id`**
+    *   Description: Updates an existing job application identified by its `id`.
+    *   Request Body: JSON object containing the fields to update.
+    *   Response: The updated application object.
 
-### `npm run eject`
+*   **`DELETE /api/applications/:id`**
+    *   Description: Deletes a job application identified by its `id`.
+    *   Response: A confirmation message.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+*   **`GET /api/download-csv`**
+    *   Description: Downloads all application data as a CSV file named `applications_export.csv`.
+    *   Response: A CSV file download.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+applogger/
+├── data/             # Stores CSV data files (applications.csv)
+├── public/           # Static assets for the React app (index.html, favicon.ico, etc.)
+├── src/              # React application source code
+│   ├── components/   # Reusable React components
+│   │   └── analytics/ # Components specifically for the analytics dashboard
+│   ├── App.css       # Main styles for App.js
+│   ├── App.js        # Main application component orchestrating the UI
+│   ├── App.test.js   # Tests for App.js
+│   ├── index.css     # Global styles
+│   ├── index.js      # Entry point for the React application
+│   ├── logo.svg      # Sample logo
+│   ├── reportWebVitals.js # Performance reporting (Create React App specific)
+│   └── setupTests.js # Test setup (Create React App specific)
+├── .env              # Environment variables (if any specific configurations are needed)
+├── .gitignore        # Specifies intentionally untracked files that Git should ignore
+├── launch_dev.bat    # Windows batch file to launch the dev environment (alternative to npm run dev)
+├── package-lock.json # Records exact versions of dependencies
+├── package.json      # Project metadata, dependencies, and npm scripts
+├── server.js         # Express.js backend server logic (API endpoints, CSV handling)
+└── README.md         # This file: Project overview, setup, and usage instructions
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue for bugs, feature requests, or improvements.
 
-## Learn More
+Before contributing, please ensure your code adheres to the existing style and that any new features are well-tested (if applicable).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License. (You may want to create a `LICENSE` file in the root of the `applogger` directory with the full MIT License text if one does not already exist).
